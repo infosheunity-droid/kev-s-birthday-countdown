@@ -1,0 +1,40 @@
+body { 
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+    color: #451a03; 
+    font-family: 'Georgia', serif; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
+}
+
+.card-container { 
+    position: relative; 
+    width: 400px; 
+    height: 500px; 
+    background: #ffffff; 
+    border-radius: 25px; 
+    overflow: hidden; 
+    box-shadow: 0 20px 40px rgba(180, 83, 9, 0.2); 
+}
+
+.revealed-content { text-align: center; padding: 25px; }
+
+#daily-photo { 
+    width: 100%; height: 300px; object-fit: cover; 
+    border-radius: 15px; border: 4px solid #fbbf24; 
+}
+
+#scratch-canvas { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    cursor: pointer; 
+}
+
+.pop-up-photo {
+    position: fixed; bottom: 20px; right: 20px; width: 120px; height: 120px;
+    border-radius: 50%; border: 4px solid #f59e0b; object-fit: cover; z-index: 999;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
