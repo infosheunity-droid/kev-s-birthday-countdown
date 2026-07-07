@@ -53,15 +53,18 @@ const music = new Audio('music/chooseyou-music.mp3');
 canvas.width = 400; 
 canvas.height = 500;
 
+// Fill canvas
 ctx.fillStyle = '#d6d3d1'; 
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+// Updated Greeting Text
 ctx.fillStyle = '#451a03'; 
-ctx.font = 'bold 30px Georgia';
+ctx.font = 'bold 24px Georgia';
 ctx.textAlign = 'center';
-ctx.fillText('Tap to Reveal', 200, 250);
+ctx.fillText('Hi Love,', 200, 230);
+ctx.fillText("let's journey to your 30th", 200, 270);
 ctx.font = '16px Georgia';
-ctx.fillText('Tap here for your daily memory...', 200, 290);
+ctx.fillText('(Tap to reveal today’s memory)', 200, 320);
 
 canvas.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
