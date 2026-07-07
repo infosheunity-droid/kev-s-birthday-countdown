@@ -32,33 +32,41 @@ const dailyContent = [
     { day: 1, reason: "Because tomorrow, our biggest adventure begins. Happy Birthday, my Love. This is definitely 30! but.....with me!!!!!", img: "images/date2.jpg" }
 ];
 
-// 2. Logic
+// 2. Logic: Countdown Calculation
 const targetDate = new Date('2026-08-01');
 const today = new Date();
 const diffTime = targetDate - today;
 const daysLeft = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
 
+// 3. Update HTML Content
 const content = dailyContent.find(c => c.day === daysLeft) || { day: daysLeft, reason: "Counting down to your best decade yet.", img: "images/kev.jpeg" };
 
 document.getElementById('countdown-days').innerText = `${daysLeft} Days Until Your 30th! 🎂`;
 document.getElementById('daily-reason').innerText = `Reason #${content.day}: ${content.reason}`;
 document.getElementById('daily-photo').src = content.img;
 
-// 3. Canvas and Music Setup
+// 4. Tap-to-Reveal and Music Logic
 const canvas = document.getElementById('scratch-canvas');
 const ctx = canvas.getContext('2d');
-const music = new Audio('music/birthday-song.mp3'); 
+const music = new Audio('music/chooseyou-music.mp3'); 
 
-canvas.width = 400; canvas.height = 500;
-ctx.fillStyle = '#d6d3d1'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-ctx.fillStyle = '#451a03'; ctx.font = 'bold 30px Georgia';
+canvas.width = 400; 
+canvas.height = 500;
+
+ctx.fillStyle = '#d6d3d1'; 
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+ctx.fillStyle = '#451a03'; 
+ctx.font = 'bold 30px Georgia';
 ctx.textAlign = 'center';
 ctx.fillText('Tap to Reveal', 200, 250);
+ctx.font = '16px Georgia';
+ctx.fillText('Tap here for your daily memory...', 200, 290);
 
 canvas.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas.style.display = 'none';
-    
+
     // Play music once per day
     const lastPlayed = localStorage.getItem('lastPlayedDate');
     const todayStr = new Date().toDateString();
