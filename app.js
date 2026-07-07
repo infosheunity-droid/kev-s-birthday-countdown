@@ -45,7 +45,7 @@ document.getElementById('countdown-days').innerText = `${daysLeft} Days Until Yo
 document.getElementById('daily-reason').innerText = `Reason #${content.day}: ${content.reason}`;
 document.getElementById('daily-photo').src = content.img;
 
-// 4. Tap-to-Reveal and Music Logic
+// 4. Tap-to-Reveal, Celebration, and Music Logic
 const canvas = document.getElementById('scratch-canvas');
 const ctx = canvas.getContext('2d');
 const music = new Audio('music/chooseyou-music.mp3'); 
@@ -53,11 +53,9 @@ const music = new Audio('music/chooseyou-music.mp3');
 canvas.width = 400; 
 canvas.height = 500;
 
-// Fill canvas
 ctx.fillStyle = '#d6d3d1'; 
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-// Updated Greeting Text
 ctx.fillStyle = '#451a03'; 
 ctx.font = 'bold 24px Georgia';
 ctx.textAlign = 'center';
@@ -67,8 +65,17 @@ ctx.font = '16px Georgia';
 ctx.fillText('(Tap to reveal today’s reason)', 200, 320);
 
 canvas.addEventListener('click', () => {
+    // Hide canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas.style.display = 'none';
+
+    // Trigger Celebration
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff0000', '#ffed4a', '#3b82f6', '#10b981']
+    });
 
     // Play music once per day
     const lastPlayed = localStorage.getItem('lastPlayedDate');
