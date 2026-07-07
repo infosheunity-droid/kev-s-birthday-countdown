@@ -64,7 +64,7 @@ ctx.textAlign = 'center';
 ctx.fillText('Hi Love,', 200, 230);
 ctx.fillText("let's journey to your 30th", 200, 270);
 ctx.font = '16px Georgia';
-ctx.fillText('(Tap to reveal today’s memory)', 200, 320);
+ctx.fillText('(Tap to reveal today’s reason)', 200, 320);
 
 canvas.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
