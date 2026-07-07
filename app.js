@@ -45,7 +45,7 @@ document.getElementById('countdown-days').innerText = `${daysLeft} Days Until Yo
 document.getElementById('daily-reason').innerText = `Reason #${content.day}: ${content.reason}`;
 document.getElementById('daily-photo').src = 'images/kev.jpeg'; 
 
-// 4. Scratch Canvas Logic
+// 4. Tap-to-Reveal Logic (Mobile-Friendly)
 const canvas = document.getElementById('scratch-canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = 400; 
@@ -59,14 +59,14 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 ctx.fillStyle = '#451a03'; 
 ctx.font = 'bold 30px Georgia';
 ctx.textAlign = 'center';
-ctx.fillText('Scratch to Reveal', 200, 250);
+ctx.fillText('Tap to Reveal', 200, 250);
 ctx.font = '16px Georgia';
-ctx.fillText('Your daily memory awaits...', 200, 290);
+ctx.fillText('Tap here for your daily memory...', 200, 290);
 
-// Interaction
-canvas.addEventListener('mousemove', (e) => {
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.beginPath(); 
-    ctx.arc(e.offsetX, e.offsetY, 30, 0, Math.PI * 2); 
-    ctx.fill();
+// Interaction: Simple Click/Tap to clear
+canvas.addEventListener('click', () => {
+    // This clears the canvas instantly when tapped
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Hide the canvas element entirely after tapping
+    canvas.style.display = 'none';
 });
